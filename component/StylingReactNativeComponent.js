@@ -56,7 +56,7 @@ const StylingReactNativeComponent = () => {
             marginTop: 12,
             color: 'black',
           }}>
-          Malang
+          Rock And Roll All Nite
         </Text>
         <View
           style={{
