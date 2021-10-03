@@ -9,7 +9,7 @@ export default function Cart(props) {
         <Image source={cart} style={styles.iconCart} />
         <Text style={styles.notif}>{props.qty}</Text>
       </View>
-      <Text style={styles.text}>Keranjang Belanja Anda</Text>
+      <Text style={styles.text}>Keranjang Belanja Anda Ya</Text>
     </View>
   );
 }
