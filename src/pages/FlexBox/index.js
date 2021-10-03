@@ -86,7 +86,7 @@ const FlexBox = () => {
   useEffect(() => {
     console.log('Did Mount');
     setTimeout(() => {
-      setSubscriber(400);
+      setSubscriber(800);
     }, 2000);
     return () => {
       console.log('Did Update');
