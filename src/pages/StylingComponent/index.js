@@ -5,11 +5,9 @@ import macbook from '../../assets/img/macbook.jpg';
 const StylingComponent = () => {
   return (
     <View>
-      <ScrollView>
-        <JudulDaftar />
-        <StylingReactNativeComponent />
-        <StylingReactNativeComponent />
-      </ScrollView>
+      <JudulDaftar />
+      <StylingReactNativeComponent />
+      {/* <StylingReactNativeComponent /> */}
     </View>
   );
 };
