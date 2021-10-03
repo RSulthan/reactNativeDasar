@@ -5,6 +5,7 @@ import Position from './pages/Position';
 import FlexBox from './pages/FlexBox';
 import SampleComponent from './pages/SampleComponent';
 import PropsDinamis from './pages/PropsDinamis';
+import StateDinamis from './pages/StateDinamis';
 
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
@@ -20,7 +21,8 @@ const App = () => {
       {/* <FlexBox /> */}
       {/* {isShow && <FlexBox />} */}
       {/* <SampleComponent /> */}
-      <PropsDinamis />
+      {/* <PropsDinamis /> */}
+      <StateDinamis />
     </View>
   );
 };
