@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {Text, View, Image, StyleSheet, ScrollView} from 'react-native';
-import macbook from '../public/img/macbook.jpg';
+import macbook from '../../assets/img/macbook.jpg';
 
-const DaftarHargaMacbook = () => {
+const StylingComponent = () => {
   return (
     <View>
       <ScrollView>
@@ -56,7 +56,7 @@ const StylingReactNativeComponent = () => {
             marginTop: 12,
             color: 'black',
           }}>
-          Rock And Roll All Nite
+          Mantap Jiwa
         </Text>
         <View
           style={{
@@ -90,4 +90,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DaftarHargaMacbook;
+export default StylingComponent;

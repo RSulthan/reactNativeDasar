@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import cart from '../public/img/cart.png';
+import cart from '../../assets/icon/cart.png';
 
-export default function PositionReactNative() {
+export default function Position() {
   return (
     <View style={styles.wrapper}>
       <Text>Jumlah Item Belanja</Text>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'relative',
-    marginTop: 10,
+    marginTop: 30,
   },
   iconCart: {
     width: 50,
