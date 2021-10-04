@@ -9,14 +9,8 @@
     {
       "name": "Andra Akmal",
       "email": "andra@gmail.com",
-      "bidang": "Gitar",
+      "bidang": "Drama",
       "id": 5
-    },
-    {
-      "name": "Carl Johnson",
-      "email": "johnson@gmail.com",
-      "bidang": "Begal",
-      "id": 6
     },
     {
       "name": "Ryder Adem Bener",
@@ -41,12 +35,6 @@
       "email": "bellic@gmail.com",
       "bidang": "Contract Killer",
       "id": 10
-    },
-    {
-      "name": "Reznov",
-      "email": "reznov@gmail.com",
-      "bidang": "Bandar",
-      "id": 11
     }
   ]
 }

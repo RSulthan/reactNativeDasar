@@ -1,6 +1,6 @@
 import Axios from 'axios';
 import React, {useState, useEffect} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, Alert} from 'react-native';
 import {StyleSheet, Text, View, Button, TextInput, Image} from 'react-native';
 
 export default function LocalAPI() {
@@ -71,6 +71,14 @@ export default function LocalAPI() {
     setButton('Simpan');
   };
 
+  const onDelete = item => {
+    console.log('item yang didelete: ', item);
+    Axios.delete(`http://192.168.100.6:3004/users/${item.id}`).then(res => {
+      console.log('res delete ', res);
+      getData();
+    });
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.textTitle}>Local API (JSON Server)</Text>
@@ -112,6 +120,12 @@ export default function LocalAPI() {
             email={user.email}
             bidang={user.bidang}
             diTekan={() => selectItem(user)}
+            diPencet={() =>
+              Alert.alert('Peringatan', 'Anda yakin akan menghapus user ini?', [
+                {text: 'Tidak', onPress: () => console.log('Button tidak')},
+                {text: 'Ya', onPress: () => onDelete(user)},
+              ])
+            }
           />
         );
       })}
@@ -133,7 +147,9 @@ const Item = props => {
         <Text style={styles.descEmail}>{props.email}</Text>
         <Text style={styles.descBidang}>{props.bidang}</Text>
       </View>
-      <Text style={styles.delete}>X</Text>
+      <TouchableOpacity onPress={props.diPencet}>
+        <Text style={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
   );
 };
