@@ -8,7 +8,9 @@ export default function ReactNativeSVG() {
       <Text style={styles.textTitle}>
         Materi Menggunakan File SVG didalam React Native
       </Text>
-      <Gaming width={244} height={125} style={styles.svgStyle} />
+      <View style={styles.svgStyle}>
+        <Gaming width={244} height={125} />
+      </View>
     </View>
   );
 }
@@ -21,8 +23,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   svgStyle: {
-    // position: 'absolute',
-    // alignItems: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });
