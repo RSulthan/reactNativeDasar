@@ -1,7 +1,10 @@
+import Axios from 'axios';
 import React, {Component, useEffect, useState} from 'react';
 import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {LogBox} from 'react-native';
 
-export default class CallAPI extends Component {
+LogBox.ignoreLogs(['Require cycle']);
+export default class CallAPIAxios extends Component {
   state = {
     people: [],
     dataBaru: [],
@@ -12,22 +15,15 @@ export default class CallAPI extends Component {
   }
 
   getData() {
-    console.log('Fungsi Get Data');
-    fetch('https://reqres.in/api/users')
-      .then(response => response.json())
-      .then(json => {
-        console.log('Data Banyak Orang Get Data', json);
+    console.log('Fungsi Get Data Axios');
+    Axios.get('https://reqres.in/api/users')
+      .then(result => {
+        console.log('result ', result);
         this.setState({
-          people: json.data,
+          people: result.data.data,
         });
       })
-      .catch(function (error) {
-        console.log(
-          'There has been a problem with your fetch operation: ' +
-            error.message,
-        );
-        throw error;
-      });
+      .catch(err => console.log('err: ', err));
   }
 
   postData() {
@@ -36,33 +32,20 @@ export default class CallAPI extends Component {
       job: 'leader',
     };
 
-    fetch('https://reqres.in/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(dataForAPI),
-    })
-      .then(response => response.json())
-      .then(json => {
-        console.log('post response: ', json);
+    Axios.post('https://reqres.in/api/users', dataForAPI)
+      .then(result => {
+        console.log('res: ', result);
         this.setState({
-          dataBaru: json,
+          dataBaru: result.data,
         });
       })
-      .catch(function (error) {
-        console.log(
-          'There has been a problem with your fetch operation: ' +
-            error.message,
-        );
-        throw error;
-      });
+      .catch(err => console.log('err: ', err));
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.textTitle}>Call API dengan VanillaJS</Text>
+        <Text style={styles.textTitle}>Call API dengan Axios</Text>
         <Tombol
           title="GET DATA"
           label="Response GET DATA"

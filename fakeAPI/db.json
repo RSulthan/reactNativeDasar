@@ -1,0 +1,52 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Sulthan",
+      "email": "rsulthan5@gmail.com",
+      "bidang": "FS Dev"
+    },
+    {
+      "name": "Andra Akmal",
+      "email": "andra@gmail.com",
+      "bidang": "Gitar",
+      "id": 5
+    },
+    {
+      "name": "Carl Johnson",
+      "email": "johnson@gmail.com",
+      "bidang": "Begal",
+      "id": 6
+    },
+    {
+      "name": "Ryder Adem Bener",
+      "email": "ryder@gmail.com",
+      "bidang": "Pusat operasi begal",
+      "id": 7
+    },
+    {
+      "name": "Big Smoke Saykoji",
+      "email": "extradip@gmail.com",
+      "bidang": "Muscle Boss",
+      "id": 8
+    },
+    {
+      "name": "Tenpenny",
+      "email": "corrupt@gmail.com",
+      "bidang": "Police",
+      "id": 9
+    },
+    {
+      "name": "Niko Bellic",
+      "email": "bellic@gmail.com",
+      "bidang": "Contract Killer",
+      "id": 10
+    },
+    {
+      "name": "Reznov",
+      "email": "reznov@gmail.com",
+      "bidang": "Bandar",
+      "id": 11
+    }
+  ]
+}
