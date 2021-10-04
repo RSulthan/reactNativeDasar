@@ -1,54 +1,36 @@
-import React, {useEffect, useState} from 'react';
-import {Button, Image, StyleSheet, Text, View} from 'react-native';
-import {create} from 'react-test-renderer';
+import React, {Component, useEffect, useState} from 'react';
+import {Button, Image, ScrollView, StyleSheet, Text, View} from 'react-native';
 
-export default function CallAPIVanilla() {
-  const [dataUser, setDataUser] = useState({
-    avatar: '',
-    first_name: '',
-    last_name: '',
-    email: '',
-  });
+export default class CallAPI extends Component {
+  state = {
+    people: [],
+    dataBaru: [],
+  };
 
-  const [dataJob, setDataJob] = useState({
-    name: '',
-    job: '',
-  });
+  componentDidMount() {
+    console.log('Component Did Mount');
+  }
 
-  useEffect(() => {
-    // Call API Method GET (Secara DEFAULT tanpa OPTIONS)
-    // fetch('https://reqres.in/api/users/2')
-    //   .then(response => response.json())
-    //   .then(json => console.log(json));
-    // Call API Method POST
-    // const dataForAPI = {
-    //   name: 'morpheus',
-    //   job: 'leader',
-    // };
-    // console.log('data object: ', dataForAPI);
-    // console.log('data stringify: ', JSON.stringify(dataForAPI));
-    // fetch('https://reqres.in/api/users', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(dataForAPI),
-    // })
-    //   .then(response => response.json())
-    //   .then(json => {
-    //     console.log('post response: ', json);
-    //   });
-  }, []);
-
-  const getData = () => {
-    fetch('https://reqres.in/api/users/2')
+  getData() {
+    console.log('Fungsi Get Data');
+    fetch('https://reqres.in/api/users')
       .then(response => response.json())
       .then(json => {
-        console.log(json);
-        setDataUser(json.data);
+        console.log('Data Banyak Orang Get Data', json);
+        this.setState({
+          people: json.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ' +
+            error.message,
+        );
+        throw error;
       });
-  };
-  const postData = () => {
+  }
+
+  postData() {
     const dataForAPI = {
       name: 'morpheus',
       job: 'leader',
@@ -64,33 +46,124 @@ export default function CallAPIVanilla() {
       .then(response => response.json())
       .then(json => {
         console.log('post response: ', json);
-        setDataJob(json);
+        this.setState({
+          dataBaru: json,
+        });
+      })
+      .catch(function (error) {
+        console.log(
+          'There has been a problem with your fetch operation: ' +
+            error.message,
+        );
+        throw error;
       });
-  };
-  return (
-    <View style={styles.container}>
-      <Text style={styles.textTitle}>Call API dengan VanillaJS</Text>
-      <Tombol title="GET DATA" label="Response GET DATA" diTekan={getData} />
-      <View style={styles.viewData}>
-        <Profile
-          avatar={dataUser.avatar}
-          firstName={dataUser.first_name}
-          lastName={dataUser.last_name}
-          email={dataUser.email}
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.textTitle}>Call API dengan VanillaJS</Text>
+        <Tombol
+          title="GET DATA"
+          label="Response GET DATA"
+          diTekan={() => this.getData()}
+        />
+        <ScrollView>
+          <View style={styles.viewData}>
+            {this.state.people.map(orang => (
+              <Profile
+                key={orang.id}
+                avatar={orang.avatar}
+                firstName={orang.first_name}
+                lastName={orang.last_name}
+                email={orang.email}
+              />
+            ))}
+          </View>
+        </ScrollView>
+        <View style={styles.line} />
+        <Tombol
+          title="POST DATA"
+          label="Response POST DATA"
+          diTekan={() => this.postData()}
+        />
+        <BuatData
+          getName={this.state.dataBaru.name}
+          getJob={this.state.dataBaru.job}
         />
       </View>
-      <View style={styles.line} />
-      <Tombol title="POST DATA" label="Response POST DATA" diTekan={postData} />
-      <View style={styles.viewData}>
-        <BuatData getName={dataJob.name} getJob={dataJob.job} />
-      </View>
-    </View>
-  );
+    );
+  }
 }
+
+// export default function CallAPIVanilla() {
+//   const [dataUser, setDataUser] = useState({
+//     avatar: '',
+//     first_name: '',
+//     last_name: '',
+//     email: '',
+//   });
+
+//   const [dataJob, setDataJob] = useState({
+//     name: '',
+//     job: '',
+//   });
+
+//   useEffect(() => {
+
+//   }, []);
+
+//   const getData = () => {
+//     fetch('https://reqres.in/api/users')
+//       .then(response => response.json())
+//       .then(json => {
+//         console.log(json);
+//         setDataUser(json.data[4]);
+//       });
+//   };
+//   const postData = () => {
+//     const dataForAPI = {
+//       name: 'morpheus',
+//       job: 'leader',
+//     };
+
+//     fetch('https://reqres.in/api/users', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(dataForAPI),
+//     })
+//       .then(response => response.json())
+//       .then(json => {
+//         console.log('post response: ', json);
+//         setDataJob(json);
+//       });
+//   };
+//   return (
+//     <View style={styles.container}>
+//       <Text style={styles.textTitle}>Call API dengan VanillaJS</Text>
+//       <Tombol title="GET DATA" label="Response GET DATA" diTekan={getData} />
+//       <View style={styles.viewData}>
+//         <Profile
+//           avatar={dataUser.avatar}
+//           firstName={dataUser.first_name}
+//           lastName={dataUser.last_name}
+//           email={dataUser.email}
+//         />
+//       </View>
+//       <View style={styles.line} />
+//       <Tombol title="POST DATA" label="Response POST DATA" diTekan={postData} />
+//       <View style={styles.viewData}>
+//         <BuatData getName={dataJob.name} getJob={dataJob.job} />
+//       </View>
+//     </View>
+//   );
+// }
 
 const BuatData = props => {
   return (
-    <View>
+    <View style={styles.viewData}>
       <Text>{props.getName}</Text>
       <Text>{props.getJob}</Text>
     </View>
