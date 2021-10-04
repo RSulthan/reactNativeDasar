@@ -61,12 +61,12 @@ export default function BasicJavascript() {
       <Text>Age: {usia}</Text>
 
       <Text>{sapaHewan(hewanPeliharaan)}</Text>
-      <Text>{namaOrang[0]}</Text>
-      <Text>{namaOrang[1]}</Text>
-      <Text>{namaOrang[2]}</Text>
+      <Text key={namaOrang[0]}>{namaOrang[0]}</Text>
+      <Text key={namaOrang[1]}>{namaOrang[1]}</Text>
+      <Text key={namaOrang[2]}>{namaOrang[2]}</Text>
       <Text>=========================</Text>
       {namaOrang.map(orang => (
-        <Text>{orang}</Text>
+        <Text key={orang}>{orang}</Text>
       ))}
     </View>
   );
