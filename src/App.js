@@ -12,6 +12,7 @@ import ReactNativeSVG from './pages/ReactNativeSvg';
 import CallAPIVanilla from './pages/CallAPIVanilla';
 import CallAPIAxios from './pages/CallAPIAxios';
 import LocalAPI from './pages/LocalAPI';
+import PushNotif from './pages/PushNotif';
 
 const App = () => {
   const [isShow, SetIsShow] = useState(true);
@@ -35,7 +36,8 @@ const App = () => {
         {/* <ReactNativeSVG /> */}
         {/* <CallAPIVanilla /> */}
         {/* <CallAPIAxios /> */}
-        <LocalAPI />
+        {/* <LocalAPI /> */}
+        <PushNotif />
       </ScrollView>
     </View>
   );

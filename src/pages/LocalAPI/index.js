@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
   },
   desc: {
     marginLeft: 18,
-    marginTop: 10,
+    marginTop: 2,
     flex: 1,
   },
   descName: {
